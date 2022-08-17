@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import image from '../images/list-check.svg'
 
 const Header = () => (
   <nav className="navbar navbar-expand-lg">
     <div className="container-fluid">
-      <img src={image} alt="Logo" className='logo'/>
+      <img src={image} alt="Logo" className="logo bg-light" />
       <button
         className="navbar-toggler"
         type="button"
@@ -19,12 +19,26 @@ const Header = () => (
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <Link className="nav-link" to="/ToDoList">
-            To Do List 
-          </Link>
-          <Link className="nav-link" to="/about">
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link active text-secondary"
+                : "nav-link text-light"
+            }
+            to="/ToDoList"
+          >
+            To-Do List
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link active text-secondary"
+                : "nav-link text-light"
+            }
+            to="/about"
+          >
             About
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>

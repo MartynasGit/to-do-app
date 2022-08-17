@@ -3,10 +3,9 @@ import { Container, Form } from "react-bootstrap";
 
 const ToDoList = () => {
   return (
-    <Container fluid className="text-center m-3">
-      <h1>To-Do list</h1>
-      <Form>
-      </Form>
+    <Container fluid className="text-center">
+      <h1 className="text-light m-3">To-Do list</h1>
+      <Form></Form>
     </Container>
   );
 };

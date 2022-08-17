@@ -5,13 +5,16 @@ body{
     margin: 0;
     background:rgb(190, 188, 83);
     font-family: sans-serif;
-    color: white;
 }
 .navbar {
     background:rgb(102, 26, 153);
     font-size: 1.5rem;
-    color: aliceblue;
 }
 .logo{
     width: 1.5rem;
+    fill: white;
 }
+.nav-link{
+    margin-left: 0.7rem;
+}
+
