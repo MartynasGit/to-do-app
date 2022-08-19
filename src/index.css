@@ -1,20 +1,25 @@
-*, *::after, *::before {
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
-body{
-    margin: 0;
-    background:rgb(190, 188, 83);
-    font-family: sans-serif;
+body {
+  margin: 0;
+  background: rgb(190, 188, 83);
+  font-family: sans-serif;
 }
 .navbar {
-    background:rgb(102, 26, 153);
-    font-size: 1.5rem;
+  background: rgb(102, 26, 153);
+  font-size: 1.5rem;
 }
-.logo{
-    width: 1.5rem;
-    fill: white;
+.logo {
+  width: 1.5rem;
+  fill: white;
 }
-.nav-link{
-    margin-left: 0.7rem;
+.nav-link {
+  margin-left: 0.7rem;
 }
-
+.error {
+  height: 80vh;
+  margin: 2rem;
+}
