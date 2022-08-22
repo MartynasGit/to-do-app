@@ -1,8 +1,7 @@
-*,
-*::after,
-*::before {
+* {
   box-sizing: border-box;
 }
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 body {
   margin: 0;
   background: rgb(190, 188, 83);
@@ -22,4 +21,31 @@ body {
 .error {
   height: 80vh;
   margin: 2rem;
+}
+.Footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.minHeight {
+  min-height: 73vh;
+}
+.item {
+  margin: 0 auto;
+  padding: 7px 0 0 0;
+  border-radius: 5px;
+}
+.purpleButton {
+  background-color: rgb(102, 26, 153);
+  color: white;
+}
+.purpleButton:hover {
+  background-color: rgba(102, 26, 153, 0.756);
+  color: rgba(255, 255, 255, 0.634);
+}
+.purpleButton:focus {
+  background-color: rgb(102, 26, 153);
+  color: white;
+  border: 0;
 }

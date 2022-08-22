@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import image from '../images/list-check.svg'
+import image from '../../data/list-check.svg'
 
 const Header = () => (
   <nav className="navbar navbar-expand-lg">
     <div className="container-fluid">
-      <img src={image} alt="Logo" className="logo bg-light" />
+      <img src={image} alt="Logo" className="logo" />
       <button
         className="navbar-toggler"
         type="button"
@@ -25,7 +25,7 @@ const Header = () => (
                 ? "nav-link active text-secondary"
                 : "nav-link text-light"
             }
-            to="/ToDoList"
+            to="/"
           >
             To-Do List
           </NavLink>
