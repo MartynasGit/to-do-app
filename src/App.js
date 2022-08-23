@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -8,7 +8,7 @@ import ToDoList from "./components/ToDoList/ToDoList";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<ToDoList />} />
@@ -17,7 +17,7 @@ function App() {
           />
         </Routes>
         <Footer/>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
