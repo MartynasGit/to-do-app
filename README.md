@@ -2,14 +2,15 @@
 
 Website made with react and boostrap.
 
-Website contains To-do list and calculator.
+Website contains To-Do list and calculator.
+To-Do list items is stored in local storage, so your tasks wont be deleted after you open the page later.
 
 Purpose of the website is to learn react !
 
 
 # How to use
 
-Page is public with Github pages link.
+Page is live with Github pages link. -- https://martynasgit.github.io/to-do-app/
 
 OR
 
