@@ -1,5 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import About from "./components/About/About";
+import Calculator from "./components/Calculator/Calculator";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import NotFound from "./components/NotFound/NotFound";
@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ToDoList />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/calc" element={<Calculator />} />
           <Route path="*" element={<NotFound />}
           />
         </Routes>

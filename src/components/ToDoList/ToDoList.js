@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 const ToDoList = () => {
   const [newItem, setNewItem] = useState({ name: "" });
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(false);
   const itemInput = useRef(null);
 
   useEffect(() => {
@@ -12,19 +13,21 @@ const ToDoList = () => {
       localStorage.setItem("items", JSON.stringify(items));
     } else {
       setItems(JSON.parse(lsItems));
-    }
+    } // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     itemInput.current.value = "";
     if (newItem.name !== "") {
       setItems([...items, newItem]);
       setNewItem({ name: "" });
+      setError(false);
+    } else {
+      setError(true);
     }
   };
 
@@ -34,9 +37,9 @@ const ToDoList = () => {
 
   const handleEdit = (idx) => {
     let newName = prompt("New task");
-    let filteredItems = items.filter((_, i) => i === idx);
-    console.log(filteredItems[0].name);
-    setItems(items.replace(filteredItems[0].name, newName));
+    const editedItems = JSON.parse(localStorage.getItem("items"));
+    editedItems[idx].name = newName;
+    setItems(editedItems);
   };
 
   const deleteItem = (idx) => {
@@ -45,12 +48,12 @@ const ToDoList = () => {
   };
 
   return (
-    <div className="minHeight p-5">
-      <Container fluid className="d-flex flex-column align-items-center">
-        <div className="card w-50 text-bg-light">
+    <div className="minHeight mt-3">
+      <Container fluid className="d-flex flex-column align-items-center container-lg">
+        <div className="card text-bg-light col-md-5 ">
           <div className="card-body">
-            <h1 className="card-title text-center">To-Do List</h1>
-            <form className="col-12 d-flex m-3 justify-content-center pe-3">
+            <h1 className="card-title text-center mb-4">To-Do List</h1>
+            <form className="col-12 d-flex mt-1 justify-content-center" onSubmit={(e) => e.preventDefault()}>
               <div className="col-5">
                 <input
                   className="form-control"
@@ -67,7 +70,12 @@ const ToDoList = () => {
                 </button>
               </div>
             </form>
-            <ul className="list-group">
+            {error && (
+              <div className="text-danger text-center">
+                Input must not be empty
+              </div>
+            )}
+            <ul className="list-group mt-3">
               {items.length > 0 ? (
                 items.map((item, idx) => (
                   <li key={idx} className="list-group-item">
@@ -91,7 +99,7 @@ const ToDoList = () => {
                   </li>
                 ))
               ) : (
-                <div>No items found!</div>
+                <div className="text-center">No items found!</div>
               )}
             </ul>
           </div>

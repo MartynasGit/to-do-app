@@ -49,3 +49,46 @@ body {
   color: white;
   border: 0;
 }
+
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    margin-top: 2rem;
+    grid-template-columns: repeat(4, 6rem);
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.74);
+}
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255, 0.904);
+}
+.span-two {
+    grid-column: span 2;
+}
+.output {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.349);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.current-operand{
+    color: white;
+    font-size: 2.5rem;
+}
+.current-sum{
+color: rgb(216, 213, 213);
+font: 1.5rem;
+}
+.tinyLogo{
+  width: 30px;
+}
