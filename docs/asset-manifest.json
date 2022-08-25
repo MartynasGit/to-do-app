@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/to-do-app/static/css/main.a424de48.css",
+    "main.js": "/to-do-app/static/js/main.d322b645.js",
+    "static/media/error.webp": "/to-do-app/static/media/error.d9c93429bfd41a11dd06.webp",
+    "index.html": "/to-do-app/index.html",
+    "main.a424de48.css.map": "/to-do-app/static/css/main.a424de48.css.map",
+    "main.d322b645.js.map": "/to-do-app/static/js/main.d322b645.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a424de48.css",
+    "static/js/main.d322b645.js"
+  ]
+}
