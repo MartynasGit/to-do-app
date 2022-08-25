@@ -5,6 +5,7 @@ const ToDoList = () => {
   const [newItem, setNewItem] = useState({ name: "" });
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
+  const [editInput, setEditInput] = useState("");
   const itemInput = useRef(null);
 
   useEffect(() => {
@@ -32,14 +33,24 @@ const ToDoList = () => {
   };
 
   const handeInput = (e) => {
-    setNewItem({ name: e.target.value, done: false });
+    setNewItem({ name: e.target.value, edited: false });
   };
 
   const handleEdit = (idx) => {
-    let newName = prompt("New task");
     const editedItems = JSON.parse(localStorage.getItem("items"));
-    editedItems[idx].name = newName;
+    editedItems[idx].edited = true;
     setItems(editedItems);
+    setEditInput(items[idx].name);
+  };
+  const submitEdit = (idx) => {
+    if (editInput !== "") {
+      const editedItems = JSON.parse(localStorage.getItem("items"));
+      editedItems[idx] = { name: editInput, edited: false };
+      setItems(editedItems);
+    }
+  };
+  const handleEditInput = (e) => {
+    setEditInput(e.target.value);
   };
 
   const deleteItem = (idx) => {
@@ -49,11 +60,17 @@ const ToDoList = () => {
 
   return (
     <div className="minHeight mt-3">
-      <Container fluid className="d-flex flex-column align-items-center container-lg">
-        <div className="card text-bg-light col-md-5 ">
+      <Container
+        fluid
+        className="d-flex flex-column align-items-center container-lg"
+      >
+        <div className="card text-bg-light col-12 col-sm-12 col-md-9 col-lg-5">
           <div className="card-body">
             <h1 className="card-title text-center mb-4">To-Do List</h1>
-            <form className="col-12 d-flex mt-1 justify-content-center" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="col-12 d-flex mt-1 justify-content-center"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <div className="col-5">
                 <input
                   className="form-control"
@@ -78,24 +95,42 @@ const ToDoList = () => {
             <ul className="list-group mt-3">
               {items.length > 0 ? (
                 items.map((item, idx) => (
-                  <li key={idx} className="list-group-item">
-                    {item.name}
-                    <button
-                      onClick={() => {
-                        deleteItem(idx);
-                      }}
-                      className="btn purpleButton float-end"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleEdit(idx);
-                      }}
-                      className="btn purpleButton float-end mx-2"
-                    >
-                      Edit
-                    </button>
+                  <li
+                    key={item + idx}
+                    className="list-group-item d-flex justify-content-between"
+                  >
+                    {item.edited ? (
+                      <div className=" col-3  col-md-5 col-lg-6">
+                        <input
+                          className="form-control"
+                          type="text"
+                          value={editInput}
+                          onChange={
+                            handleEditInput
+                          }
+                        />
+                      </div>
+                    ) : (
+                      item.name
+                    )}
+                    <div>
+                      <button
+                        onClick={() => {
+                          !item.edited ? handleEdit(idx) : submitEdit(idx);
+                        }}
+                        className="btn purpleButton me-1"
+                      >
+                        {!item.edited ? "Edit" : "Submit"}
+                      </button>
+                      <button
+                        onClick={() => {
+                          deleteItem(idx);
+                        }}
+                        className="btn purpleButton"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </li>
                 ))
               ) : (

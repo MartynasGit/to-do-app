@@ -54,25 +54,27 @@ function Calculator() {
   };
 
   return (
-    <div className="calculator-grid pb-3">
-      <div className="output">
-        {result ? <div className="current-sum">{result}</div> : ""}
-        <div className="current-operand">{calc || "0"}</div>
+    <div className="minHeight">
+      <div className="calculator-grid pb-3">
+        <div className="output">
+          {result ? <div className="current-sum">{result}</div> : ""}
+          <div className="current-operand">{calc || "0"}</div>
+        </div>
+        <button className="span-two" onClick={clearCalc}>
+          AC
+        </button>
+        <button onClick={deleteLast}>DEL</button>
+        {buttonOps.map((keys) => {
+          return (
+            <button onClick={(e) => updateCalc(e.target.textContent)}>
+              {keys}
+            </button>
+          );
+        })}
+        <button className="span-two" onClick={calculate}>
+          =
+        </button>
       </div>
-      <button className="span-two" onClick={clearCalc}>
-        AC
-      </button>
-      <button onClick={deleteLast}>DEL</button>
-      {buttonOps.map((keys) => {
-        return (
-          <button onClick={(e) => updateCalc(e.target.textContent)}>
-            {keys}
-          </button>
-        );
-      })}
-      <button className="span-two" onClick={calculate}>
-        =
-      </button>
     </div>
   );
 }
